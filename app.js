@@ -2,7 +2,7 @@ const Header = (props) => {
     return(
         <header>
             <h1>Scoreboard</h1>
-            <sapn className='stats'>Player: {props.totalPlayers}</sapn>
+            <span className='stats'>Player: {props.totalPlayers}</span>
         </header>
 
     );
@@ -42,7 +42,6 @@ const Player = (props) => {
     return (
         <div className="player">
             <span className="player-name">
-                {/* <button className="remove-player" onClick={() => props.removePlayer(props.id)}>x</button> */}
                 <button className="remove-player" onClick={() => props.removePlayer(props.id)}>x</button>
             </span>
             <span className="player-name">
@@ -72,16 +71,23 @@ const Player = (props) => {
           }
         })
       }
+
       render() {
-        return (
+        
+        return(
           <div className="scoreboard">
             <Header title="My scoreboard" totalPlayers={this.state.players.length} />
           
             {/*Players List*/}
-            { this.state.players.map( item => <Player name={item.name}
-                key={item.id.toString()} 
-                removePlayer={this.handleRemovePlayer}
-                id={item.id} />)
+            { 
+              this.state.players.map( item => 
+                <Player 
+                  name={item.name} 
+                  key={item.id.toString()} 
+                  removePlayer={this.handleRemovePlayer} 
+                  id={item.id} 
+                />
+              )
             }
           </div>
         );
